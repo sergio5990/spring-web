@@ -23,6 +23,9 @@ import java.util.List;
 @RequestMapping("/persons")
 public class PersonController {
 
+    private String rootPath = "/Users/skruk/apache-tomcat-9.0.20/temp/files/"; //absolute path
+
+
     private static final String MAIN = "persons/main";
     @Autowired
     private IPersonService personService;
@@ -79,7 +82,7 @@ public class PersonController {
 
     @RequestMapping(value = "/download/image", method = RequestMethod.GET)
     public ResponseEntity<byte[]> download(@RequestParam(value = "name") String fileName) {
-        File file = new File("/resources/" + fileName);
+        File file = new File(rootPath + fileName);
         if (file.exists()) {
             byte[] content = new byte[0];
             try {
@@ -115,7 +118,7 @@ public class PersonController {
     }
 
     private void saveImage(String filename, MultipartFile image) throws IOException {
-        File file = new File("/resources/" + filename + ".jpg");
+        File file = new File(rootPath + filename + ".jpg");
         FileUtils.writeByteArrayToFile(file, image.getBytes());
     }
 }

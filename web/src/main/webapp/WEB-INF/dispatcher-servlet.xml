@@ -12,6 +12,7 @@
 
     <import resource="classpath*:beans-services.xml"/>
     <mvc:resources mapping="/resources/**" location="assests"/>
+
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
     <context:component-scan base-package="by.academy.it.rest.controller"/>

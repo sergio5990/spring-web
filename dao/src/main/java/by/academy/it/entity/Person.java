@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data @NoArgsConstructor
@@ -22,6 +23,7 @@ public class Person {
     private Integer age;
     
     @Column(name = "NAME")
+    @NotNull
     @Pattern(regexp="^[A-Z][a-z]+$", message="Username must be alphanumeric with no spaces and first capital")
     private String name;
     
